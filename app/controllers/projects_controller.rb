@@ -20,8 +20,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-	    @project = Project.find_by_name(params[:projectName])
-	    session[:current_team_name] = params[:teamName]
+		session[:current_team_name] = params[:teamName]
+	    @project = Team.find_by_name(session[:current_team_name]).projects.find_by_name(params[:projectName])
 	    respond_to do |format|
 	      format.html # show.html.erb
 	    end

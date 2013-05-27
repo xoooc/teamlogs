@@ -29,7 +29,7 @@ class TeamsController < ApplicationController
 	end
 
 	def show
-		@team = Team.find_by_name(params[:teamName])
+		@team = current_user.teams.find_by_name(params[:teamName])
 		respond_to do |format|
 	      format.html # show.html.erb
 	  end
