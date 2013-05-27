@@ -3,9 +3,19 @@
 <% @team.projects.each do |p| %>
 <p>
 	<% if p.team_id == @team.id %>
-		<%= link_to p.name, @team.name + '/' + p.name %>
+	<%= link_to p.name, @team.name + '/' + p.name %>
 	<% end %>
 </p>
 <% end %>
+
+<%= form_for(@team) do |f| %>
+<p>
+	<%= f.label :user_tokens, "Members" %><br />
+	<%= f.text_field :user_tokens, "data-pre" => @team.users.map(&:attributes).to_json %>
+</p>
+<%= f.submit %>
+<% end %>
+
 <%= button_to 'Add Project', @team.name + '/projects/new' %>
+
 <%= link_to 'Back', root_path %>

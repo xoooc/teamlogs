@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function(){
+	$("#team_user_tokens").tokenInput("/" + sessions[:current_team_name] + ".json",{
+		crossDomain: false,
+		prePopulate: $("#team_user_tokens").data("pre")
+	});
+});

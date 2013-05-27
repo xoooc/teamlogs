@@ -1,10 +1,9 @@
 TeamLogs::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => 'users/sessions' }
   resources :teams
   resources :projects
 
   root :to => 'home#index'
-
   match ':teamName' => 'teams#show'
   match ':teamName/projects/new' => 'projects#new'
   match ':teamName/:projectName' => 'projects#show'
