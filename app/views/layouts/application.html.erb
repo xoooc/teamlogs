@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TeamLogs</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+	<title>TeamLogs</title>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
 
 </head>
 <body>
-
-<%= yield %>
+	<% if user_signed_in? %>
+		<%= current_user.email %>
+		<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+	<% else %>
+		<%= link_to "Sign In", '/users/sign_in' %>
+		<%= link_to "Sign Up", '/users/sign_up' %>
+	<% end %>
+	<%= yield %>
 
 </body>
 </html>
