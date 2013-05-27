@@ -4,6 +4,8 @@ TeamLogs::Application.routes.draw do
   resources :projects
 
   root :to => 'home#index'
+  match 'users' => 'teams#getUsers'
+  match 'teams/new' => 'teams#new'
   match ':teamName' => 'teams#show'
   match ':teamName/projects/new' => 'projects#new'
   match ':teamName/:projectName' => 'projects#show'

@@ -8,10 +8,9 @@
 </p>
 <% end %>
 
-<%= form_for(@team) do |f| %>
+<%= form_for @team do |f| %>
 <p>
-	<%= f.label :user_tokens, "Members" %><br />
-	<%= f.text_field :user_tokens, "data-pre" => @team.users.map(&:attributes).to_json %>
+	
 </p>
 <%= f.submit %>
 <% end %>

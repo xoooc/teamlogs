@@ -2,17 +2,17 @@
 <html>
 <head>
 	<title>TeamLogs</title>
-	<%= stylesheet_link_tag    "application", "token-input", :media => "all" %>
+	<%= stylesheet_link_tag "application", "token-input" %>
 	<%= javascript_include_tag "application", "jquery.tokeninput" %>
 	<%= csrf_meta_tags %>
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 	<% if user_signed_in? %>
-		<%= current_user.email %>
-		<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+	<%= current_user.email %>
+	<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
 	<% else %>
-		<%= link_to "Sign In", '/users/sign_in' %>
-		<%= link_to "Sign Up", '/users/sign_up' %>
+	<%= link_to "Sign In", '/users/sign_in' %>
+	<%= link_to "Sign Up", '/users/sign_up' %>
 	<% end %>
 	<p></p>
 </head>
