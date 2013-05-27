@@ -16,10 +16,7 @@
 
 $(function() {
   $("#team_users_tokens").tokenInput("/users.json", {
-    alert("hello");
     crossDomain: false,
     prePopulate: $("#team_users_tokens").data("pre")
   });
-	
-
 });

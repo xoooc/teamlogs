@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
 
 	def create
 		@team = Team.new(params[:team])
-		@team.users << current_user
+		#@team.users << current_user
 		error = false
 		current_user.teams.each do |t|
 			if t.name == @team.name
