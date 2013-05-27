@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
 		@team = Team.new(params[:team])
 		error = false
 		current_user.teams.each do |t|
-			if t.name = @team.name
+			if t.name == @team.name
 				error = true
 				break			
 			end
@@ -20,7 +20,6 @@ class TeamsController < ApplicationController
 			if error
 				format.html{ redirect_to '/'+@team.name, alert: 'Team with name already exists.'}
 			elsif @team.save
-				current_user.teams << @team
 				format.html{redirect_to '/' + @team.name, notice: 'Team was successfully created.' }
 			else
 				format.html {render action: "new"}
