@@ -1,8 +1,13 @@
 TeamLogs::Application.routes.draw do
   devise_for :users
   resources :teams
+  resources :projects
 
   root :to => 'home#index'
+
+  match ':teamName' => 'teams#show'
+  match ':teamName/projects/new' => 'projects#new'
+  match ':teamName/:projectName' => 'projects#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

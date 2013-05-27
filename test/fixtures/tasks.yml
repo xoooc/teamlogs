@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  asignee: MyString
+  deadline: 2013-05-27 05:11:44
+  description: MyString
+  priority: MyString
+  tag: MyString
+
+two:
+  name: MyString
+  asignee: MyString
+  deadline: 2013-05-27 05:11:44
+  description: MyString
+  priority: MyString
+  tag: MyString

@@ -4,7 +4,7 @@
 
 <% current_user.teams.each do |t| %>
 <p>
-	<%= link_to t.name, '/teams/' + t.id.to_s %>
+	<%= link_to t.name, t.name %>
 </p>
 <% end %>
 <%= link_to "Create Team", '/teams/new' %>

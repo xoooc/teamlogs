@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
-
+<b>Name:</b>
+<%= @team.name %>
+<% @team.projects.each do |p| %>
 <p>
-  <b>Name:</b>
-  <%= @team.name %>
+	<% if p.team_id == @team.id %>
+		<%= link_to p.name, @team.name + '/' + p.name %>
+	<% end %>
 </p>
-
+<% end %>
+<%= button_to 'Add Project', @team.name + '/projects/new' %>
 <%= link_to 'Back', root_path %>

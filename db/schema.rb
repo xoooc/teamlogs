@@ -11,7 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130526190551) do
+ActiveRecord::Schema.define(:version => 20130526224625) do
+
+  create_table "log_items", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "tag"
+    t.string   "kind"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "logs", :force => true do |t|
+    t.date     "logDate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "team_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "name"
+    t.string   "asignee"
+    t.datetime "deadline"
+    t.string   "description"
+    t.string   "priority"
+    t.string   "tag"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "teams", :force => true do |t|
     t.string   "name"
