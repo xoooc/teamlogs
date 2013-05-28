@@ -15,8 +15,8 @@
 //= require_tree .
 
 $(function() {
-  $("#team_users_tokens").tokenInput("/users.json", {
+  $("#team_user_tokens").tokenInput("/users.json", {
     crossDomain: false,
-    prePopulate: $("#team_users_tokens").data("pre")
+    prePopulate: $("#team_user_tokens").data("pre")
   });
 });
