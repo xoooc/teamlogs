@@ -31,16 +31,35 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = current_user.teams.find_by_name(params[:teamName])
+		10.times{puts @team.name}
 		respond_to do |format|
 	    	format.html # show.html.erb
-	  	end
+	    end
 	end
 
 	def getUsers
-		@users = User.where("email like ?", "%#{params[:q]}%")
+		#@users = User.where("email like ?", "%#{params[:q]}%")
+		@users = User.all
 		respond_to do |format|
 	    	format.html # show.html.erb
-	    	format.json { render :json => @users.map(&:attributes), :only => ["id", "email"] }
-	  	end
+	    	format.json { render :json => @users.map(&:attributes) }
+	    end
+	end
+
+	def update
+		@team = Team.find(params[:id])
+		if @team.update_attributes(params[:team])
+			render :action => 'show',
+			:notice  => "Successfully updated team."
+		else
+			render :action => 'edit'
+		end
+	end
+
+	def addMembers
+		@team = Team.find(params[:id])
+		if @team.users << User.find(params[:user])
+			render :action => 'show'
+		end
 	end
 end

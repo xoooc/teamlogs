@@ -9,6 +9,7 @@
  */
 
 (function ($) {
+
 // Default settings
 var DEFAULT_SETTINGS = {
 	// Search settings
@@ -127,6 +128,7 @@ $.fn.tokenInput = function (method) {
     } else {
         return methods.init.apply(this, arguments);
     }
+
 };
 
 // TokenList class for each input
@@ -267,6 +269,7 @@ $.TokenList = function (input, url_or_data, settings) {
                 case KEY.ENTER:
                 case KEY.NUMPAD_ENTER:
                 case KEY.COMMA:
+                    alert("COMMA");
                   if(selected_dropdown_item) {
                     add_token($(selected_dropdown_item).data("tokeninput"));
                     hidden_input.change();

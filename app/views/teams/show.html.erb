@@ -1,5 +1,8 @@
 <b>Name:</b>
 <%= @team.name %>
+<% @team.users.each do |u| %>
+<%= u.email %>
+<% end %>
 <% @team.projects.each do |p| %>
 <p>
 	<% if p.team_id == @team.id %>

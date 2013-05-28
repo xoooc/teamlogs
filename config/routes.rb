@@ -1,5 +1,5 @@
 TeamLogs::Application.routes.draw do
-  devise_for :users, :controllers => { :sessions => 'users/sessions' }
+  devise_for :users
   resources :teams
   resources :projects
 
@@ -9,6 +9,7 @@ TeamLogs::Application.routes.draw do
   match ':teamName' => 'teams#show'
   match ':teamName/projects/new' => 'projects#new'
   match ':teamName/:projectName' => 'projects#show'
+  match ':teamName/member/new/:userId' => 'team#addMembers'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
