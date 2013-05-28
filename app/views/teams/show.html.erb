@@ -1,6 +1,6 @@
-<b>Team:</b>
-<%= @team.name %>
-
+<b>
+	<%= @team.name %>
+</b>
 <p>
 	<b>Members:</b>
 	<% @team.users.each do |u| %>
@@ -9,24 +9,26 @@
 	<% end %>
 </p>
 
+
 <p>
-<%= form_for @team do |f| %>
+	<%= form_for @team do |f| %>
 	<%= f.label :user_tokens, "Add Members" %><br />
 	<%= f.text_field :user_tokens %>
 	<%= f.submit "Add Members" %>
-<% end %>
+	<% end %>
 </p>
 
+
 <p>
-<% if @team.projects.length > 0 %>
-<b> Projects: </b>
-<% @team.projects.each do |p| %>
+	<% if @team.projects.length > 0 %>
+	<b> Projects: </b>
+	<% @team.projects.each do |p| %>
 	<% if p.team_id == @team.id %>
 	<br /><%= link_to p.name, @team.name + '/' + p.name %>
 	<% end %>
-<% end %>
-<% end %>
-<%= button_to 'Add Project', @team.name + '/projects/new' %>
+	<% end %>
+	<% end %>
+	<%= button_to 'Add Project', @team.name + '/projects/new' %>
 </p>
 
 

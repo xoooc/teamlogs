@@ -39,17 +39,8 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = current_user.teams.find_by_name(params[:teamName])
-		10.times{puts @team.name}
 		respond_to do |format|
 	    	format.html # show.html.erb
-	    end
-	end
-
-	def getUsers
-		@users = User.where("username like ?", "%#{params[:q]}%")
-		respond_to do |format|
-	    	format.html # show.html.erb
-	    	format.json { render :json => @users.map{|f| {:id => f.id, :username => f.username} }}
 	    end
 	end
 
