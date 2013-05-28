@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527192925) do
+ActiveRecord::Schema.define(:version => 20130528083449) do
 
   create_table "log_items", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20130527192925) do
 
   create_table "logs", :force => true do |t|
     t.date     "logDate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -52,11 +59,6 @@ ActiveRecord::Schema.define(:version => 20130527192925) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "teams_users", :force => true do |t|
-    t.integer "team_id"
-    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
