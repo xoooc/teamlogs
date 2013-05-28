@@ -48,7 +48,7 @@ class TeamsController < ApplicationController
 	def update
 		@team = Team.find(params[:id])
 		if @team.update_attributes(params[:team])
-			render :action => 'show',
+			redirect_to "/" + @team.name,
 			:notice  => "Successfully updated team."
 		else
 			render :action => 'edit'

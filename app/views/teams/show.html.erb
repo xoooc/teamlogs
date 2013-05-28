@@ -13,8 +13,8 @@
 
 <%= form_for @team do |f| %>
 <p>
-	<%= f.label :user_tokens, "Users" %><br />
-	<%= f.text_field :user_tokens, "data-pre" => @team.users.map{|f| {:id => f.id, :email => f.email} }.to_json %>
+	<%= f.label :user_tokens, "Members" %><br />
+	<%= f.text_field :user_tokens, "data-pre" => @team.users.map{|u| {:id => u.id, :email => u.email} }.to_json %>
 </p>
 <%= f.submit %>
 <% end %>
