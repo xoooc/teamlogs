@@ -6,12 +6,17 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :team_tokens
   # attr_accessible :title, :body
 
   #has_and_belongs_to_many :teams
   has_many :memberships
   has_many :teams, :through => :memberships
   has_many :logs
+
+  attr_reader :team_tokens
+  def team_tokens=(ids)
+    self.team_ids = ids.split(",")
+  end
 end
 

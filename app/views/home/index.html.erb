@@ -4,5 +4,10 @@
 	<%= link_to t.name, t.name %>
 </p>
 <% end %>
+<%= form_tag do %>
+	<%= label_tag(:team_tokens, "Join teams") %> <br>
+	<%= text_field :team_tokens, "data-pre" => current_user.teams.map{|u| {:id => u.id, :name => u.name} }.to_json %>
+	<%= submit_tag("Join") %>
+<% end %>
 <%= button_to "Create Team", '/teams/new' %>
 <% end %>

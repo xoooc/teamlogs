@@ -1,4 +1,12 @@
 class TeamsController < ApplicationController
+	def index
+		@teams = Team.where("name like ?", "%#{params[:q]}%")
+		respond_to do |format|
+	    	format.html # show.html.erb
+	    	format.json { render :json => @teams.map{|f| {:id => f.id, :name => f.name} }}
+	    end
+	end
+	
 	def new
 		@team = Team.new
 

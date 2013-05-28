@@ -20,4 +20,9 @@ $(function() {
     crossDomain: false,
     prePopulate: $("#team_user_tokens").data("pre")
   });
+
+  $("#user_team_tokens").tokenInput("/teams.json", {
+    crossDomain: false,
+    prePopulate: $("#user_team_tokens").data("pre")
+  });
 });
