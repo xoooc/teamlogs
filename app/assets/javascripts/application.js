@@ -16,9 +16,9 @@
 
 $(function() {
   $("#team_user_tokens").tokenInput("/users.json", {
-  	propertyToSearch: 'name',
+  	propertyToSearch: 'username',
     crossDomain: false,
-    prePopulate: $("#team_user_tokens").data("pre")
+    //prePopulate: $("#team_user_tokens").data("pre")
   });
 
   $("#user_team_tokens").tokenInput("/teams.json", {

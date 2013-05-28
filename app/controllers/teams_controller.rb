@@ -46,10 +46,10 @@ class TeamsController < ApplicationController
 	end
 
 	def getUsers
-		@users = User.where("email like ?", "%#{params[:q]}%")
+		@users = User.where("username like ?", "%#{params[:q]}%")
 		respond_to do |format|
 	    	format.html # show.html.erb
-	    	format.json { render :json => @users.map{|f| {:id => f.id, :email => f.email, :name => f.name, :username => f.username} }}
+	    	format.json { render :json => @users.map{|f| {:id => f.id, :username => f.username} }}
 	    end
 	end
 

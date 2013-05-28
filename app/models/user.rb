@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :team_tokens, :username, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :team_tokens, :username, :name, :searchable
   # attr_accessible :title, :body
 
   #has_and_belongs_to_many :teams
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   def team_tokens=(ids)
     self.team_ids = ids.split(",")
   end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -32,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def searchable
-    "{name} {username} {email}"
+    self.name + ' (' + self.username + ') (' + self.email + ')'
   end
 end
 

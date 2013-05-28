@@ -1,24 +1,33 @@
-<b>Name:</b>
+<b>Team:</b>
 <%= @team.name %>
-<% @team.users.each do |u| %>
-<%= u.name %>
-<% end %>
-<% @team.projects.each do |p| %>
+
 <p>
-	<% if p.team_id == @team.id %>
-	<%= link_to p.name, @team.name + '/' + p.name %>
+	<b>Members:</b>
+	<% @team.users.each do |u| %>
+	<br />
+	<%= u.name %>
 	<% end %>
 </p>
-<% end %>
 
-<%= form_for @team do |f| %>
 <p>
-	<%= f.label :user_tokens, "Members" %><br />
-	<%= f.text_field :user_tokens, "data-pre" => @team.users.map{|u| {:id => u.id, :email => u.email, :name => u.name, :username => u.username} }.to_json %>
-</p>
-<%= f.submit %>
+<%= form_for @team do |f| %>
+	<%= f.label :user_tokens, "Add Members" %><br />
+	<%= f.text_field :user_tokens %>
+	<%= f.submit "Add Members" %>
 <% end %>
+</p>
 
+<p>
+<% if @team.projects.length > 0 %>
+<b> Projects: </b>
+<% @team.projects.each do |p| %>
+	<% if p.team_id == @team.id %>
+	<br /><%= link_to p.name, @team.name + '/' + p.name %>
+	<% end %>
+<% end %>
+<% end %>
 <%= button_to 'Add Project', @team.name + '/projects/new' %>
+</p>
+
 
 <%= link_to 'Back', root_path %>
