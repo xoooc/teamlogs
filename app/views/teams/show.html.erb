@@ -1,7 +1,7 @@
 <b>Name:</b>
 <%= @team.name %>
 <% @team.users.each do |u| %>
-<%= u.email %>
+<%= u.name %>
 <% end %>
 <% @team.projects.each do |p| %>
 <p>
@@ -14,7 +14,7 @@
 <%= form_for @team do |f| %>
 <p>
 	<%= f.label :user_tokens, "Members" %><br />
-	<%= f.text_field :user_tokens, "data-pre" => @team.users.map{|u| {:id => u.id, :email => u.email} }.to_json %>
+	<%= f.text_field :user_tokens, "data-pre" => @team.users.map{|u| {:id => u.id, :email => u.email, :name => u.name, :username => u.username} }.to_json %>
 </p>
 <%= f.submit %>
 <% end %>
